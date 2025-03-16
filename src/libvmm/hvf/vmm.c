@@ -31,9 +31,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "debug.h"
-#include "vmm_instruction_emul.h"
 #include "vmmapi.h"
 #include "internal.h"
+#include "vmm_instruction_emul.h"
 
 // hypervisor framework implementation
 int

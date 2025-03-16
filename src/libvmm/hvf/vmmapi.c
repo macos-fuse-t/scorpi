@@ -106,18 +106,6 @@ struct vcpu {
 static int guest_vaddr2paddr(struct vcpu *vcpu, uint64_t vaddr,
     uint64_t *paddr);
 
-static int
-vm_device_open(const char *name)
-{
-	return (-1);
-}
-
-static int
-vm_ctl_create(const char *name, int ctlfd)
-{
-	return (-1);
-}
-
 int
 vm_create(const char *name)
 {
@@ -353,22 +341,6 @@ vm_mmap_getnext(struct vmctx *ctx, vm_paddr_t *gpa, int *segid,
 {
 	printf("vm_mmap_getnext\n");
 	return -1;
-}
-
-/*
- * Return 0 if the segments are identical and non-zero otherwise.
- *
- * This is slightly complicated by the fact that only device memory segments
- * are named.
- */
-static int
-cmpseg(size_t len, const char *str, size_t len2, const char *str2)
-{
-	if (len == len2) {
-		if ((!str && !str2) || (str && str2 && !strcmp(str, str2)))
-			return (0);
-	}
-	return (-1);
 }
 
 bool
@@ -750,7 +722,7 @@ arm64_gen_inst_emul_data(struct vcpu *vcpu, uint32_t esr_iss,
 		paging->flags |= VM_GP_MMU_ENABLED;
 }
 
-static uint16_t
+__unused static uint16_t
 sysreg2hvf(int sysreg)
 {
 	if ((sysreg & (~MRS_CRm_MASK)) ==
@@ -885,7 +857,6 @@ arm64_gen_reg_emul_data(struct vcpu *vcpu, uint32_t esr_iss,
 	struct vre *vre;
 	uint64_t val;
 	uint64_t sysreg;
-	uint16_t hvreg;
 
 	vre = &vme_ret->u.reg_emul.vre;
 	vre->inst_syndrome = esr_iss;
@@ -896,8 +867,7 @@ arm64_gen_reg_emul_data(struct vcpu *vcpu, uint32_t esr_iss,
 
 	sysreg = __MRS_REG(ISS_MSR_OP0(esr_iss), ISS_MSR_OP1(esr_iss),
 	    ISS_MSR_CRn(esr_iss), ISS_MSR_CRm(esr_iss), ISS_MSR_OP2(esr_iss));
-	hvreg = sysreg2hvf(sysreg);
-	DPRINTLN("sysreg 0x%llx (%hx), reg %x", sysreg, hvreg, reg_num);
+	DPRINTLN("sysreg 0x%llx (%hx), reg %x", sysreg, sysreg2hvf(sysreg), reg_num);
 	if (vre->dir == VM_DIR_READ) {
 		if (hv_vcpu_get_sys_reg(vcpu->vcpu, sysreg, &val) !=
 		    HV_SUCCESS) {
@@ -1049,7 +1019,7 @@ vmexit_handle_exception(struct vcpu *vcpu, struct vm_exit *vme)
 	return (ret);
 }
 
-static void
+__unused static void
 dump_regs(struct vcpu *vcpu)
 {
 	uint64_t regs[] = {
@@ -2043,7 +2013,7 @@ guest_paging_info(struct vcpu *vcpu, struct vm_guest_paging *paging)
  * not valid, return 0.  If an error occurs obtaining the mapping,
  * return -1.
  */
-static int
+__unused static int
 guest_vaddr2paddr(struct vcpu *vcpu, uint64_t vaddr, uint64_t *paddr)
 {
 	struct vm_guest_paging paging;

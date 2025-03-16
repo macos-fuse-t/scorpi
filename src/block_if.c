@@ -472,7 +472,6 @@ blockif_open(nvlist_t *nvl, const char *ident)
 	off_t size, psectsz, psectoff;
 	int extra, fd, i, sectsz;
 	int ro, candelete, geom, ssopt, pssopt;
-	int nodelete;
 	int bootindex;
 
 	pthread_once(&blockif_once, blockif_init);
@@ -481,15 +480,12 @@ blockif_open(nvlist_t *nvl, const char *ident)
 	extra = 0;
 	ssopt = 0;
 	ro = 0;
-	nodelete = 0;
 	bootindex = -1;
 
 	if (get_config_bool_node_default(nvl, "nocache", false)) {
 		// extra |= O_DIRECT;
 		err(4, "nocache is not supported");
 	}
-	if (get_config_bool_node_default(nvl, "nodelete", false))
-		nodelete = 1;
 	if (get_config_bool_node_default(nvl, "sync", false) ||
 	    get_config_bool_node_default(nvl, "direct", false))
 		extra |= O_SYNC;

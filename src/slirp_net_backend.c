@@ -162,7 +162,7 @@ slirp_cb_notify(void *param)
 }
 
 static void
-slirp_cb_register_poll_fd(int fd, void *param __unused)
+slirp_cb_register_poll_sock(slirp_os_socket fd, void *param __unused)
 {
 	const int one = 1;
 
@@ -189,7 +189,7 @@ slirp_cb_send_packet(const void *buf, size_t len, void *param)
 }
 
 static void
-slirp_cb_unregister_poll_fd(int fd __unused, void *opaque __unused)
+slirp_cb_unregister_poll_sock(slirp_os_socket fd __unused, void *opaque __unused)
 {
 }
 
@@ -197,9 +197,9 @@ slirp_cb_unregister_poll_fd(int fd __unused, void *opaque __unused)
 static const struct SlirpCb slirp_cbs = {
 	.clock_get_ns = slirp_cb_clock_get_ns,
 	.notify = slirp_cb_notify,
-	.register_poll_fd = slirp_cb_register_poll_fd,
+	.register_poll_socket = slirp_cb_register_poll_sock,
 	.send_packet = slirp_cb_send_packet,
-	.unregister_poll_fd = slirp_cb_unregister_poll_fd,
+	.unregister_poll_socket = slirp_cb_unregister_poll_sock,
 };
 
 static int
@@ -241,7 +241,7 @@ pollev2slirpev(int events)
 }
 
 static int
-slirp_addpoll_cb(int fd, int events, void *param)
+slirp_addpoll_cb(slirp_os_socket fd, int events, void *param)
 {
 	struct slirp_priv *priv;
 	struct pollfd *pollfd, *pollfds;
@@ -317,7 +317,7 @@ slirp_pollfd_td_loop(void *param)
 		wakeup = slirp_addpoll_cb(priv->wakeup[0], POLLIN, priv);
 
 		timeout = UINT32_MAX;
-		slirp_pollfds_fill(priv->slirp, &timeout, slirp_addpoll_cb,
+		slirp_pollfds_fill_socket(priv->slirp, &timeout, slirp_addpoll_cb,
 		    priv);
 
 		pollfds = priv->pollfds;
@@ -461,7 +461,7 @@ _slirp_init(struct net_backend *be, const char *devname __unused, nvlist_t *nvl,
 {
 	struct slirp_priv *priv = NET_BE_PRIV(be);
 	SlirpConfig config = {
-		.version = 4,
+		.version = 6,
 		.if_mtu = SLIRP_MTU,
 		.restricted = false,
 		.in_enabled = true,
@@ -618,7 +618,7 @@ _slirp_cleanup(struct net_backend *be)
 	slirp_priv_cleanup(priv);
 }
 
-static ssize_t
+/*static ssize_t
 slirp_peek_recvlen(struct net_backend *be)
 {
 	struct slirp_priv *priv = NET_BE_PRIV(be);
@@ -630,7 +630,7 @@ slirp_peek_recvlen(struct net_backend *be)
 	assert((size_t)n <= SLIRP_MTU);
 	return (n);
 }
-
+*/
 static ssize_t
 slirp_recv(struct net_backend *be, const struct iovec *iov, int iovcnt)
 {

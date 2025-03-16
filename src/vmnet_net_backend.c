@@ -52,7 +52,6 @@ struct vmnet_priv {
 void
 vmnet_cleanup(struct net_backend *be)
 {
-	struct vmnet_priv *priv = NET_BE_PRIV(be);
 }
 
 void

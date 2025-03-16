@@ -242,7 +242,6 @@ static void
 ukbd_event(int down, uint8_t hidcode, uint8_t modifiers, void *arg)
 {
 	struct ukbd_softc *sc;
-	struct bhyvegc_image *gc;
 
 	sc = arg;
 	pthread_mutex_lock(&sc->mtx);

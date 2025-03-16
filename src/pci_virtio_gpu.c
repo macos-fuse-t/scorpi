@@ -626,7 +626,7 @@ pci_vgpu_transfer_to_host_2d(struct pci_vgpu_softc *sc,
 static int pci_vgpu_generate_edid(struct pci_vgpu_softc *sc, uint16_t width,
     uint16_t height, struct edid *edid);
 
-static size_t
+__unused static size_t
 pci_vgpu_get_edid(struct pci_vgpu_softc *sc, struct virtio_gpu_ctrl_hdr *req,
     uint8_t *rsp, size_t rsp_len)
 {
@@ -1046,12 +1046,6 @@ pci_vgpu_init(struct pci_devinst *pi, nvlist_t *nvl)
 	return (0);
 }
 
-static int
-pci_vgpu_legacy_config(nvlist_t *nvl, const char *opts)
-{
-	return (0);
-}
-
 static void
 pci_vgpu_baraddr(struct pci_devinst *pi, int baridx, int enabled,
     uint64_t address)
@@ -1144,10 +1138,8 @@ pci_vgpu_legacy_ctrl_read(struct pci_devinst *pi, int baridx, uint64_t offset,
 uint64_t
 pci_vgpu_barread(struct pci_devinst *pi, int baridx, uint64_t offset, int size)
 {
-	struct pci_vgpu_softc *sc;
 	uint64_t val;
 
-	sc = pi->pi_arg;
 	switch (baridx) {
 	case LEGACY_CTRL_BAR:
 		val = pci_vgpu_legacy_ctrl_read(pi, baridx, offset, size);
@@ -1201,9 +1193,6 @@ static void
 pci_vgpu_barwrite(struct pci_devinst *pi, int baridx, uint64_t offset, int size,
     uint64_t value)
 {
-	struct pci_vgpu_softc *sc;
-
-	sc = pi->pi_arg;
 	switch (baridx) {
 	case LEGACY_CTRL_BAR:
 		pci_vgpu_legacy_ctrl_write(pi, baridx, offset, size, value);

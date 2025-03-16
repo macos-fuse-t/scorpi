@@ -60,9 +60,13 @@ static int unet_debug = 0;
 #define WPRINTF(params) PRINTLN params
 
 #define MSETW(ptr, val) ptr = { (uint8_t)(val), (uint8_t)((val) >> 8) }
-#define MSETDW(ptr, val)                                                       \
-	ptr = { (uint8_t)(val), (uint8_t)((val) >> 8), (uint8_t)((val) >> 16), \
+#define MSETDW(ptr, val)													\
+	ptr = { (uint8_t)(val), (uint8_t)((val) >> 8), (uint8_t)((val) >> 16),	\
 		(uint8_t)((val) >> 24) }
+#define MSETQW(ptr, val1, val2)                                               	\
+	ptr = { (uint8_t)(val1), (uint8_t)((val1) >> 8), (uint8_t)((val1) >> 16),	\
+		(uint8_t)((val1) >> 24), (uint8_t)(val2), (uint8_t)((val2) >> 8),		\
+		(uint8_t)((val2) >> 16), (uint8_t)((val2) >> 24)}
 
 #define DEFAULT_MAC_ADDR "00CD563B4270"
 #define UNET_MTU_SIZE	 1514
@@ -775,8 +779,8 @@ struct usb_cdc_notification speed_notify = {
 	.wValue = { 0 },
 	.wIndex[0] = 1, // Interface 1
 	.wLength[0] = 8,
-	MSETDW(.data, 1lu * 1024 * 1024 * 1024),   // Upstream
-	MSETDW(.data[4], 1lu * 1024 * 1024 * 1024) // Downstream
+	MSETQW(.data, 1lu * 1024 * 1024 * 1024, // Upstream
+		1lu * 1024 * 1024 * 1024) // Downstream
 };
 
 struct usb_cdc_notification link_notify = {

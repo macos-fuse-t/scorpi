@@ -106,7 +106,7 @@ vmexit_suspend(struct vmctx *ctx, struct vcpu *vcpu, struct vm_run *vmrun)
 {
 	struct vm_exit *vme;
 	enum vm_suspend_how how;
-	int vcpuid = vcpu_id(vcpu);
+	//int vcpuid = vcpu_id(vcpu);
 
 	vme = vmrun->vm_exit;
 	how = vme->u.suspended.how;
@@ -131,19 +131,6 @@ vmexit_suspend(struct vmctx *ctx, struct vcpu *vcpu, struct vm_run *vmrun)
 		exit(100);
 	}
 	return (0);
-}
-
-static int
-vmexit_debug(struct vmctx *ctx __unused, struct vcpu *vcpu,
-    struct vm_run *vmrun __unused)
-{
-	// gdb_cpu_suspend(vcpu);
-	/*
-	 * XXX-MJ sleep for a short period to avoid chewing up the CPU in the
-	 * window between activation of the vCPU thread and the STARTUP IPI.
-	 */
-	usleep(1000);
-	return (VMEXIT_CONTINUE);
 }
 
 static int

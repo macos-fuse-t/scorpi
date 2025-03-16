@@ -2784,7 +2784,7 @@ pci_xhci_parse_devices(struct pci_xhci_softc *sc, nvlist_t *nvl)
 		XHCI_DEVINST_PTR(sc, dev->hci.hci_port) = dev;
 
 		dev->hci.hci_address = 0;
-		devsc = ue->ue_init(&dev->hci, slot_nvl);
+		devsc = ue->ue_init(&dev->hci, (nvlist_t *)slot_nvl);
 		if (devsc == NULL) {
 			goto bad;
 		}
