@@ -1,0 +1,16 @@
+/dts-v1/;
+
+/ {
+    compatible = "test,device-tree";
+    model = "Test Device Tree Blob";
+
+    chosen {
+        bootargs = "console=ttyS0,115200";
+    };
+
+    test-node {
+        compatible = "test,subnode";
+        new-prop = "value";
+    };
+};
+
