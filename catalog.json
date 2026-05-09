@@ -1,162 +1,278 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "templates": [
+    {
+      "name": "almalinux",
+      "title": "AlmaLinux",
+      "type": "linux",
+      "description": "Current recommended AlmaLinux managed cloud image.",
+      "recommended_version": "10",
+      "defaults": {
+        "cpu_count": 4,
+        "memory_size": "4G",
+        "disk_size": "64G",
+        "runtime_profile": "linux-virtio",
+        "guest_init": "cloud-init",
+        "wait_for_guest_agent": true
+      },
+      "features": ["guest-agent", "cloud-init", "host-home-mount", "guest-home-mount", "ports"],
+      "versions": [
+        {
+          "version": "10",
+          "name": "almalinux:10",
+          "description": "AlmaLinux 10 managed cloud image.",
+          "recommended": true,
+          "source": {
+            "kind": "catalog",
+            "ref": "almalinux/10-arm64/10.1-20260502.0"
+          }
+        },
+        {
+          "version": "9",
+          "name": "almalinux:9",
+          "description": "AlmaLinux 9 managed cloud image.",
+          "source": {
+            "kind": "catalog",
+            "ref": "almalinux/9-arm64/9.7-20260414"
+          }
+        }
+      ]
+    },
+    {
+      "name": "alpine",
+      "title": "Alpine",
+      "type": "linux",
+      "description": "Current recommended Alpine managed cloud image.",
+      "recommended_version": "3.23",
+      "defaults": {
+        "cpu_count": 2,
+        "memory_size": "2G",
+        "disk_size": "32G",
+        "runtime_profile": "linux-virtio",
+        "guest_init": "cloud-init",
+        "wait_for_guest_agent": true
+      },
+      "features": ["guest-agent", "cloud-init", "host-home-mount", "guest-home-mount", "ports"],
+      "versions": [
+        {
+          "version": "3.23",
+          "name": "alpine:3.23",
+          "description": "Alpine 3.23 managed cloud image.",
+          "recommended": true,
+          "source": {
+            "kind": "catalog",
+            "ref": "alpine/3.23-arm64/3.23.4-r0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "debian",
+      "title": "Debian",
+      "type": "linux",
+      "description": "Current recommended Debian managed cloud image.",
+      "recommended_version": "13",
+      "defaults": {
+        "cpu_count": 4,
+        "memory_size": "4G",
+        "disk_size": "64G",
+        "runtime_profile": "linux-virtio",
+        "guest_init": "cloud-init",
+        "wait_for_guest_agent": true
+      },
+      "features": ["guest-agent", "cloud-init", "host-home-mount", "guest-home-mount", "ports"],
+      "versions": [
+        {
+          "version": "13",
+          "name": "debian:13",
+          "description": "Debian 13 managed cloud image.",
+          "recommended": true,
+          "source": {
+            "kind": "catalog",
+            "ref": "debian/13-arm64/20260501-2465"
+          }
+        },
+        {
+          "version": "12",
+          "name": "debian:12",
+          "description": "Debian 12 managed cloud image.",
+          "source": {
+            "kind": "catalog",
+            "ref": "debian/12-arm64/20260502-2466"
+          }
+        }
+      ]
+    },
+    {
+      "name": "fedora",
+      "title": "Fedora",
+      "type": "linux",
+      "description": "Current recommended Fedora managed cloud image.",
+      "recommended_version": "44",
+      "defaults": {
+        "cpu_count": 4,
+        "memory_size": "4G",
+        "disk_size": "64G",
+        "runtime_profile": "linux-virtio",
+        "guest_init": "cloud-init",
+        "wait_for_guest_agent": true
+      },
+      "features": ["guest-agent", "cloud-init", "host-home-mount", "guest-home-mount", "ports"],
+      "versions": [
+        {
+          "version": "44",
+          "name": "fedora:44",
+          "description": "Fedora 44 managed cloud image.",
+          "recommended": true,
+          "source": {
+            "kind": "catalog",
+            "ref": "fedora/44-arm64/1.7"
+          }
+        },
+        {
+          "version": "43",
+          "name": "fedora:43",
+          "description": "Fedora 43 managed cloud image.",
+          "source": {
+            "kind": "catalog",
+            "ref": "fedora/43-arm64/1.6"
+          }
+        }
+      ]
+    },
+    {
+      "name": "generic",
+      "title": "Generic ISO",
+      "type": "other",
+      "description": "Manual install from a user-provided ISO with generic virtio defaults.",
+      "source": {
+        "kind": "iso"
+      },
+      "defaults": {
+        "cpu_count": 2,
+        "memory_size": "4G",
+        "disk_size": "64G",
+        "runtime_profile": "generic-virtio",
+        "guest_init": "none"
+      },
+      "features": ["viewer"]
+    },
+    {
+      "name": "rocky",
+      "title": "Rocky Linux",
+      "type": "linux",
+      "description": "Current recommended Rocky Linux managed cloud image.",
+      "recommended_version": "10",
+      "defaults": {
+        "cpu_count": 4,
+        "memory_size": "4G",
+        "disk_size": "64G",
+        "runtime_profile": "linux-virtio",
+        "guest_init": "cloud-init",
+        "wait_for_guest_agent": true
+      },
+      "features": ["guest-agent", "cloud-init", "host-home-mount", "guest-home-mount", "ports"],
+      "versions": [
+        {
+          "version": "10",
+          "name": "rocky:10",
+          "description": "Rocky Linux 10 managed cloud image.",
+          "recommended": true,
+          "source": {
+            "kind": "catalog",
+            "ref": "rocky/10-arm64/10.1-20251116.0"
+          }
+        },
+        {
+          "version": "9",
+          "name": "rocky:9",
+          "description": "Rocky Linux 9 managed cloud image.",
+          "source": {
+            "kind": "catalog",
+            "ref": "rocky/9-arm64/9.7-20251123.2"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ubuntu",
+      "title": "Ubuntu",
+      "type": "linux",
+      "description": "Current default supported Ubuntu LTS.",
+      "recommended_version": "24.04",
+      "defaults": {
+        "cpu_count": 4,
+        "memory_size": "4G",
+        "disk_size": "64G",
+        "runtime_profile": "linux-virtio",
+        "guest_init": "cloud-init",
+        "wait_for_guest_agent": true
+      },
+      "features": ["guest-agent", "cloud-init", "host-home-mount", "guest-home-mount", "ports"],
+      "versions": [
+        {
+          "version": "24.04",
+          "name": "ubuntu:24.04",
+          "description": "Ubuntu 24.04 LTS (Noble) managed cloud image.",
+          "recommended": true,
+          "source": {
+            "kind": "catalog",
+            "ref": "ubuntu/24.04-arm64/20260323"
+          }
+        },
+        {
+          "version": "22.04",
+          "name": "ubuntu:22.04",
+          "description": "Ubuntu 22.04 LTS (Jammy) managed cloud image.",
+          "source": {
+            "kind": "catalog",
+            "ref": "ubuntu/22.04-arm64/20260320"
+          }
+        },
+        {
+          "version": "20.04",
+          "name": "ubuntu:20.04",
+          "description": "Ubuntu 20.04 LTS (Focal) managed cloud image.",
+          "source": {
+            "kind": "catalog",
+            "ref": "ubuntu/20.04-arm64/20250624"
+          }
+        }
+      ]
+    },
+    {
+      "name": "windows",
+      "title": "Windows",
+      "type": "windows",
+      "description": "Windows from a user-provided installer ISO.",
+      "recommended_version": "11",
+      "defaults": {
+        "cpu_count": 4,
+        "memory_size": "8G",
+        "disk_size": "128G",
+        "runtime_profile": "windows-ahci-tpm",
+        "guest_init": "windows-unattend",
+        "start_after_create": true,
+        "wait_for_guest_agent": true,
+        "install_timeout_seconds": 5400
+      },
+      "features": ["guest-agent", "unattended-install", "tpm", "secure-boot", "viewer", "mounts", "ports"],
+      "versions": [
+        {
+          "version": "11",
+          "name": "windows:11",
+          "description": "Windows 11 from a user-provided installer ISO.",
+          "recommended": true,
+          "source": {
+            "kind": "iso"
+          }
+        }
+      ]
+    }
+  ],
   "images": [
     {
-      "name": "ubuntu/24.04-arm64",
-      "description": "Ubuntu 24.04 LTS (Noble)",
-      "type": "linux",
-      "os": "ubuntu",
-      "version": "24.04",
-      "arch": "arm64",
-      "image": {
-        "url": "https://cloud-images.ubuntu.com/noble/20260323/noble-server-cloudimg-arm64.img",
-        "format": "qcow2",
-        "sha256": "c7eff9b3ee6e7b212882e680a9e06cac939107fbf5298384340a0ad1c667a38a",
-        "size_bytes": 626050048
-      }
-    },
-    {
-      "name": "ubuntu/22.04-arm64",
-      "description": "Ubuntu 22.04 LTS (Jammy)",
-      "type": "linux",
-      "os": "ubuntu",
-      "version": "22.04",
-      "arch": "arm64",
-      "image": {
-        "url": "https://cloud-images.ubuntu.com/jammy/20260320/jammy-server-cloudimg-arm64.img",
-        "format": "qcow2",
-        "sha256": "cdd6b1386583adaa60be0023682b6e6f855e51648e5cc740b0e99a49ff80b24d",
-        "size_bytes": 664209408
-      }
-    },
-    {
-      "name": "ubuntu/20.04-arm64",
-      "description": "Ubuntu 20.04 LTS (Focal)",
-      "type": "linux",
-      "os": "ubuntu",
-      "version": "20.04",
-      "arch": "arm64",
-      "image": {
-        "url": "https://cloud-images.ubuntu.com/focal/20250624/focal-server-cloudimg-arm64.img",
-        "format": "qcow2",
-        "sha256": "d4603cd783e2578f838c63f7c3a8dae6b554bd6358870f2c8eb182aa51ade465",
-        "size_bytes": 615510528
-      }
-    },
-    {
-      "name": "debian/12-arm64",
-      "description": "Debian 12 (Bookworm)",
-      "type": "linux",
-      "os": "debian",
-      "version": "12",
-      "arch": "arm64",
-      "image": {
-        "url": "https://cloud.debian.org/images/cloud/bookworm/20260502-2466/debian-12-genericcloud-arm64-20260502-2466.qcow2",
-        "format": "qcow2",
-        "sha256": "00689e2d31f392d7743a0195f41de5c2fe43072f88d685e0e6ff1415678072dd",
-        "size_bytes": 339799552
-      }
-    },
-    {
-      "name": "debian/11-arm64",
-      "description": "Debian 11 (Bullseye)",
-      "type": "linux",
-      "os": "debian",
-      "version": "11",
-      "arch": "arm64",
-      "image": {
-        "url": "https://cloud.debian.org/images/cloud/bullseye/20260502-2466/debian-11-genericcloud-arm64-20260502-2466.qcow2",
-        "format": "qcow2",
-        "sha256": "342b3e24ae3f7182763a76450618d5f01e67055519003bdd625e0556c5005502",
-        "size_bytes": 264241152
-      }
-    },
-    {
-      "name": "debian/13-arm64",
-      "description": "Debian 13 (Trixie/testing)",
-      "type": "linux",
-      "os": "debian",
-      "version": "13",
-      "arch": "arm64",
-      "image": {
-        "url": "https://cdimage.debian.org/cdimage/cloud/trixie/20260501-2465/debian-13-genericcloud-arm64-20260501-2465.qcow2",
-        "format": "qcow2",
-        "sha256": "2ef292eef6fcd1927fa4e71d79cb128eef89bce858eb194b7fd83eb927c9c2fa",
-        "size_bytes": 336855040
-      }
-    },
-    {
-      "name": "fedora/44-arm64",
-      "description": "Fedora 44 Cloud",
-      "type": "linux",
-      "os": "fedora",
-      "version": "44",
-      "arch": "arm64",
-      "image": {
-        "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/44/Cloud/aarch64/images/Fedora-Cloud-Base-Generic-44-1.7.aarch64.qcow2",
-        "format": "qcow2",
-        "sha256": "55c60a3b80d3616a08705afd0459e75fe9f03c54aba7a46e4002a41a72fa0d5b",
-        "size_bytes": 528154624
-      }
-    },
-    {
-      "name": "fedora/latest-arm64",
-      "description": "Fedora latest Cloud",
-      "type": "linux",
-      "os": "fedora",
-      "version": "44",
-      "arch": "arm64",
-      "image": {
-        "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/44/Cloud/aarch64/images/Fedora-Cloud-Base-Generic-44-1.7.aarch64.qcow2",
-        "format": "qcow2",
-        "sha256": "55c60a3b80d3616a08705afd0459e75fe9f03c54aba7a46e4002a41a72fa0d5b",
-        "size_bytes": 528154624
-      }
-    },
-    {
-      "name": "alpine/3.23-arm64",
-      "description": "Alpine Linux 3.23 Cloud",
-      "type": "linux",
-      "os": "alpine",
-      "version": "3.23.4",
-      "arch": "arm64",
-      "image": {
-        "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/nocloud_alpine-3.23.4-aarch64-uefi-cloudinit-r0.qcow2",
-        "format": "qcow2",
-        "sha256": "eeda75c83fcade4c9f0c461c923b965df0fb1b294e5c66d4ef09ed0dc2ad360c",
-        "size_bytes": 235077632
-      }
-    },
-    {
-      "name": "alpine/latest-arm64",
-      "description": "Alpine Linux latest Cloud",
-      "type": "linux",
-      "os": "alpine",
-      "version": "3.23.4",
-      "arch": "arm64",
-      "image": {
-        "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/nocloud_alpine-3.23.4-aarch64-uefi-cloudinit-r0.qcow2",
-        "format": "qcow2",
-        "sha256": "eeda75c83fcade4c9f0c461c923b965df0fb1b294e5c66d4ef09ed0dc2ad360c",
-        "size_bytes": 235077632
-      }
-    },
-    {
-      "name": "fedora/43-arm64",
-      "description": "Fedora 43 Cloud",
-      "type": "linux",
-      "os": "fedora",
-      "version": "43",
-      "arch": "arm64",
-      "image": {
-        "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/43/Cloud/aarch64/images/Fedora-Cloud-Base-Generic-43-1.6.aarch64.qcow2",
-        "format": "qcow2",
-        "sha256": "66031aea9ec61e6d0d5bba12b9454e80ca94e8a79c913d37ded4c60311705b8b",
-        "size_bytes": 544997376
-      }
-    },
-    {
-      "name": "almalinux/10-arm64",
+      "id": "almalinux/10-arm64/10.1-20260502.0",
       "description": "AlmaLinux 10 Cloud",
       "type": "linux",
       "os": "almalinux",
@@ -170,11 +286,11 @@
       }
     },
     {
-      "name": "almalinux/9-arm64",
+      "id": "almalinux/9-arm64/9.7-20260414",
       "description": "AlmaLinux 9 Cloud",
       "type": "linux",
       "os": "almalinux",
-      "version": "9",
+      "version": "9.7",
       "arch": "arm64",
       "image": {
         "url": "https://repo.almalinux.org/almalinux/9/cloud/aarch64/images/AlmaLinux-9-GenericCloud-9.7-20260414.aarch64.qcow2",
@@ -184,21 +300,77 @@
       }
     },
     {
-      "name": "rocky/9-arm64",
-      "description": "Rocky Linux 9 Cloud",
+      "id": "alpine/3.23-arm64/3.23.4-r0",
+      "description": "Alpine Linux 3.23 Cloud",
       "type": "linux",
-      "os": "rocky",
-      "version": "9.7",
+      "os": "alpine",
+      "version": "3.23.4",
       "arch": "arm64",
       "image": {
-        "url": "https://download.rockylinux.org/pub/rocky/9/images/aarch64/Rocky-9-GenericCloud-Base-9.7-20251123.2.aarch64.qcow2",
+        "url": "https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/cloud/nocloud_alpine-3.23.4-aarch64-uefi-cloudinit-r0.qcow2",
         "format": "qcow2",
-        "sha256": "fc67069636d7c8afa5b71d1497f8c6628d026a0781d7ac743ec5f25995c72ee1",
-        "size_bytes": 529268736
+        "sha256": "eeda75c83fcade4c9f0c461c923b965df0fb1b294e5c66d4ef09ed0dc2ad360c",
+        "size_bytes": 235077632
       }
     },
     {
-      "name": "rocky/10-arm64",
+      "id": "debian/12-arm64/20260502-2466",
+      "description": "Debian 12 (Bookworm)",
+      "type": "linux",
+      "os": "debian",
+      "version": "12",
+      "arch": "arm64",
+      "image": {
+        "url": "https://cloud.debian.org/images/cloud/bookworm/20260502-2466/debian-12-genericcloud-arm64-20260502-2466.qcow2",
+        "format": "qcow2",
+        "sha256": "00689e2d31f392d7743a0195f41de5c2fe43072f88d685e0e6ff1415678072dd",
+        "size_bytes": 339799552
+      }
+    },
+    {
+      "id": "debian/13-arm64/20260501-2465",
+      "description": "Debian 13 (Trixie/testing)",
+      "type": "linux",
+      "os": "debian",
+      "version": "13",
+      "arch": "arm64",
+      "image": {
+        "url": "https://cdimage.debian.org/cdimage/cloud/trixie/20260501-2465/debian-13-genericcloud-arm64-20260501-2465.qcow2",
+        "format": "qcow2",
+        "sha256": "2ef292eef6fcd1927fa4e71d79cb128eef89bce858eb194b7fd83eb927c9c2fa",
+        "size_bytes": 336855040
+      }
+    },
+    {
+      "id": "fedora/43-arm64/1.6",
+      "description": "Fedora 43 Cloud",
+      "type": "linux",
+      "os": "fedora",
+      "version": "43",
+      "arch": "arm64",
+      "image": {
+        "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/43/Cloud/aarch64/images/Fedora-Cloud-Base-Generic-43-1.6.aarch64.qcow2",
+        "format": "qcow2",
+        "sha256": "66031aea9ec61e6d0d5bba12b9454e80ca94e8a79c913d37ded4c60311705b8b",
+        "size_bytes": 544997376
+      }
+    },
+    {
+      "id": "fedora/44-arm64/1.7",
+      "description": "Fedora 44 Cloud",
+      "type": "linux",
+      "os": "fedora",
+      "version": "44",
+      "arch": "arm64",
+      "image": {
+        "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/44/Cloud/aarch64/images/Fedora-Cloud-Base-Generic-44-1.7.aarch64.qcow2",
+        "format": "qcow2",
+        "sha256": "55c60a3b80d3616a08705afd0459e75fe9f03c54aba7a46e4002a41a72fa0d5b",
+        "size_bytes": 528154624
+      }
+    },
+    {
+      "id": "rocky/10-arm64/10.1-20251116.0",
       "description": "Rocky Linux 10 Cloud",
       "type": "linux",
       "os": "rocky",
@@ -212,17 +384,59 @@
       }
     },
     {
-      "name": "almalinux/8-arm64",
-      "description": "AlmaLinux 8 Cloud",
+      "id": "rocky/9-arm64/9.7-20251123.2",
+      "description": "Rocky Linux 9 Cloud",
       "type": "linux",
-      "os": "almalinux",
-      "version": "8",
+      "os": "rocky",
+      "version": "9.7",
       "arch": "arm64",
       "image": {
-        "url": "https://repo.almalinux.org/almalinux/8/cloud/aarch64/images/AlmaLinux-8-GenericCloud-8.10-20260414.aarch64.qcow2",
+        "url": "https://download.rockylinux.org/pub/rocky/9/images/aarch64/Rocky-9-GenericCloud-Base-9.7-20251123.2.aarch64.qcow2",
         "format": "qcow2",
-        "sha256": "aa8e0739976009a0d8f7ccbb24499a4f97b7ff9e37e800bc7eb98b95b9f65427",
-        "size_bytes": 1432748032
+        "sha256": "fc67069636d7c8afa5b71d1497f8c6628d026a0781d7ac743ec5f25995c72ee1",
+        "size_bytes": 529268736
+      }
+    },
+    {
+      "id": "ubuntu/20.04-arm64/20250624",
+      "description": "Ubuntu 20.04 LTS (Focal)",
+      "type": "linux",
+      "os": "ubuntu",
+      "version": "20.04",
+      "arch": "arm64",
+      "image": {
+        "url": "https://cloud-images.ubuntu.com/focal/20250624/focal-server-cloudimg-arm64.img",
+        "format": "qcow2",
+        "sha256": "d4603cd783e2578f838c63f7c3a8dae6b554bd6358870f2c8eb182aa51ade465",
+        "size_bytes": 615510528
+      }
+    },
+    {
+      "id": "ubuntu/22.04-arm64/20260320",
+      "description": "Ubuntu 22.04 LTS (Jammy)",
+      "type": "linux",
+      "os": "ubuntu",
+      "version": "22.04",
+      "arch": "arm64",
+      "image": {
+        "url": "https://cloud-images.ubuntu.com/jammy/20260320/jammy-server-cloudimg-arm64.img",
+        "format": "qcow2",
+        "sha256": "cdd6b1386583adaa60be0023682b6e6f855e51648e5cc740b0e99a49ff80b24d",
+        "size_bytes": 664209408
+      }
+    },
+    {
+      "id": "ubuntu/24.04-arm64/20260323",
+      "description": "Ubuntu 24.04 LTS (Noble)",
+      "type": "linux",
+      "os": "ubuntu",
+      "version": "24.04",
+      "arch": "arm64",
+      "image": {
+        "url": "https://cloud-images.ubuntu.com/noble/20260323/noble-server-cloudimg-arm64.img",
+        "format": "qcow2",
+        "sha256": "c7eff9b3ee6e7b212882e680a9e06cac939107fbf5298384340a0ad1c667a38a",
+        "size_bytes": 626050048
       }
     }
   ]
