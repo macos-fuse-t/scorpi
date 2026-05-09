@@ -23,7 +23,7 @@
           "description": "AlmaLinux 10 managed cloud image.",
           "recommended": true,
           "source": {
-            "kind": "catalog",
+            "kind": "image",
             "ref": "almalinux/10-arm64/10.1-20260502.0"
           }
         },
@@ -32,7 +32,7 @@
           "name": "almalinux:9",
           "description": "AlmaLinux 9 managed cloud image.",
           "source": {
-            "kind": "catalog",
+            "kind": "image",
             "ref": "almalinux/9-arm64/9.7-20260414"
           }
         }
@@ -60,7 +60,7 @@
           "description": "Alpine 3.23 managed cloud image.",
           "recommended": true,
           "source": {
-            "kind": "catalog",
+            "kind": "image",
             "ref": "alpine/3.23-arm64/3.23.4-r0"
           }
         }
@@ -88,7 +88,7 @@
           "description": "Debian 13 managed cloud image.",
           "recommended": true,
           "source": {
-            "kind": "catalog",
+            "kind": "image",
             "ref": "debian/13-arm64/20260501-2465"
           }
         },
@@ -97,7 +97,7 @@
           "name": "debian:12",
           "description": "Debian 12 managed cloud image.",
           "source": {
-            "kind": "catalog",
+            "kind": "image",
             "ref": "debian/12-arm64/20260502-2466"
           }
         }
@@ -125,7 +125,7 @@
           "description": "Fedora 44 managed cloud image.",
           "recommended": true,
           "source": {
-            "kind": "catalog",
+            "kind": "image",
             "ref": "fedora/44-arm64/1.7"
           }
         },
@@ -134,7 +134,7 @@
           "name": "fedora:43",
           "description": "Fedora 43 managed cloud image.",
           "source": {
-            "kind": "catalog",
+            "kind": "image",
             "ref": "fedora/43-arm64/1.6"
           }
         }
@@ -179,7 +179,7 @@
           "description": "Rocky Linux 10 managed cloud image.",
           "recommended": true,
           "source": {
-            "kind": "catalog",
+            "kind": "image",
             "ref": "rocky/10-arm64/10.1-20251116.0"
           }
         },
@@ -188,7 +188,7 @@
           "name": "rocky:9",
           "description": "Rocky Linux 9 managed cloud image.",
           "source": {
-            "kind": "catalog",
+            "kind": "image",
             "ref": "rocky/9-arm64/9.7-20251123.2"
           }
         }
@@ -216,7 +216,7 @@
           "description": "Ubuntu 24.04 LTS (Noble) managed cloud image.",
           "recommended": true,
           "source": {
-            "kind": "catalog",
+            "kind": "image",
             "ref": "ubuntu/24.04-arm64/20260323"
           }
         },
@@ -225,7 +225,7 @@
           "name": "ubuntu:22.04",
           "description": "Ubuntu 22.04 LTS (Jammy) managed cloud image.",
           "source": {
-            "kind": "catalog",
+            "kind": "image",
             "ref": "ubuntu/22.04-arm64/20260320"
           }
         },
@@ -234,7 +234,7 @@
           "name": "ubuntu:20.04",
           "description": "Ubuntu 20.04 LTS (Focal) managed cloud image.",
           "source": {
-            "kind": "catalog",
+            "kind": "image",
             "ref": "ubuntu/20.04-arm64/20250624"
           }
         }

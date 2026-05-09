@@ -1,9 +1,9 @@
-# Scorpi Public Catalog
+# Scorpi Public Templates
 
-This repository hosts public Scorpi catalog files.
+This repository hosts public Scorpi template manifests.
 
-Current catalog:
+Current template manifest:
 
 ```text
-https://raw.githubusercontent.com/macos-fuse-t/scorpi/main/catalog.json
+https://raw.githubusercontent.com/macos-fuse-t/scorpi/main/templates.json
 ```
