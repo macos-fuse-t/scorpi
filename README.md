@@ -22,6 +22,8 @@ Install Scorpi with Homebrew:
 brew install macos-fuse-t/homebrew-cask/scorpi
 ```
 
+Direct installer package: [scorpi-macos-installer-1.0.1.pkg](https://github.com/macos-fuse-t/scorpi/releases/download/1.0.1/scorpi-macos-installer-1.0.1.pkg)
+
 ## Quick Start
 
 ```sh
