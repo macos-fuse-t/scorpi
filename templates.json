@@ -24,7 +24,7 @@
           "recommended": true,
           "source": {
             "kind": "image",
-            "ref": "almalinux/10-arm64/10.1-20260502.0"
+            "ref": "almalinux/10-arm64/10.2-20260526.0"
           }
         },
         {
@@ -33,7 +33,7 @@
           "description": "AlmaLinux 9 managed cloud image.",
           "source": {
             "kind": "image",
-            "ref": "almalinux/9-arm64/9.7-20260414"
+            "ref": "almalinux/9-arm64/9.8-20260526"
           }
         }
       ]
@@ -99,43 +99,6 @@
           "source": {
             "kind": "image",
             "ref": "debian/12-arm64/20260502-2466"
-          }
-        }
-      ]
-    },
-    {
-      "name": "fedora",
-      "title": "Fedora",
-      "type": "linux",
-      "description": "Current recommended Fedora managed cloud image.",
-      "recommended_version": "44",
-      "defaults": {
-        "cpu_count": 4,
-        "memory_size": "4G",
-        "disk_size": "64G",
-        "runtime_profile": "linux-virtio",
-        "guest_init": "cloud-init",
-        "wait_for_guest_agent": true
-      },
-      "features": ["guest-agent", "cloud-init", "host-home-mount", "guest-home-mount", "ports"],
-      "versions": [
-        {
-          "version": "44",
-          "name": "fedora:44",
-          "description": "Fedora 44 managed cloud image.",
-          "recommended": true,
-          "source": {
-            "kind": "image",
-            "ref": "fedora/44-arm64/1.7"
-          }
-        },
-        {
-          "version": "43",
-          "name": "fedora:43",
-          "description": "Fedora 43 managed cloud image.",
-          "source": {
-            "kind": "image",
-            "ref": "fedora/43-arm64/1.6"
           }
         }
       ]
@@ -256,7 +219,7 @@
         "wait_for_guest_agent": true,
         "install_timeout_seconds": 5400
       },
-      "features": ["guest-agent", "unattended-install", "tpm", "secure-boot", "viewer", "mounts", "ports"],
+      "features": ["guest-agent", "unattended-install", "tpm", "test-signed-display-driver", "viewer", "mounts", "ports"],
       "versions": [
         {
           "version": "11",
@@ -272,31 +235,31 @@
   ],
   "images": [
     {
-      "id": "almalinux/10-arm64/10.1-20260502.0",
+      "id": "almalinux/10-arm64/10.2-20260526.0",
       "description": "AlmaLinux 10 Cloud",
       "type": "linux",
       "os": "almalinux",
-      "version": "10.1",
+      "version": "10.2",
       "arch": "arm64",
       "image": {
-        "url": "https://repo.almalinux.org/almalinux/10/cloud/aarch64/images/AlmaLinux-10-GenericCloud-10.1-20260502.0.aarch64.qcow2",
+        "url": "https://repo.almalinux.org/almalinux/10/cloud/aarch64/images/AlmaLinux-10-GenericCloud-10.2-20260526.0.aarch64.qcow2",
         "format": "qcow2",
-        "sha256": "a8f5e098ccb5ac063e86306c44928973b8c0dc41829731b17f1b7d02987204c4",
-        "size_bytes": 477888512
+        "sha256": "336c6861fe0ba9115af00f557ed1b09385a3525612dd0cb9cce7e0486f8e74a4",
+        "size_bytes": 467992576
       }
     },
     {
-      "id": "almalinux/9-arm64/9.7-20260414",
+      "id": "almalinux/9-arm64/9.8-20260526",
       "description": "AlmaLinux 9 Cloud",
       "type": "linux",
       "os": "almalinux",
-      "version": "9.7",
+      "version": "9.8",
       "arch": "arm64",
       "image": {
-        "url": "https://repo.almalinux.org/almalinux/9/cloud/aarch64/images/AlmaLinux-9-GenericCloud-9.7-20260414.aarch64.qcow2",
+        "url": "https://repo.almalinux.org/almalinux/9/cloud/aarch64/images/AlmaLinux-9-GenericCloud-9.8-20260526.aarch64.qcow2",
         "format": "qcow2",
-        "sha256": "4dee1c6b54ee869ed90485fd2c89a41ff54867a48bc4523b7454971330a8937d",
-        "size_bytes": 444006400
+        "sha256": "b5d883c5f84c68a9828fbd3aac863f9a723b43f8965a32ff7a1c198301f42a29",
+        "size_bytes": 461832192
       }
     },
     {
@@ -339,34 +302,6 @@
         "format": "qcow2",
         "sha256": "2ef292eef6fcd1927fa4e71d79cb128eef89bce858eb194b7fd83eb927c9c2fa",
         "size_bytes": 336855040
-      }
-    },
-    {
-      "id": "fedora/43-arm64/1.6",
-      "description": "Fedora 43 Cloud",
-      "type": "linux",
-      "os": "fedora",
-      "version": "43",
-      "arch": "arm64",
-      "image": {
-        "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/43/Cloud/aarch64/images/Fedora-Cloud-Base-Generic-43-1.6.aarch64.qcow2",
-        "format": "qcow2",
-        "sha256": "66031aea9ec61e6d0d5bba12b9454e80ca94e8a79c913d37ded4c60311705b8b",
-        "size_bytes": 544997376
-      }
-    },
-    {
-      "id": "fedora/44-arm64/1.7",
-      "description": "Fedora 44 Cloud",
-      "type": "linux",
-      "os": "fedora",
-      "version": "44",
-      "arch": "arm64",
-      "image": {
-        "url": "https://download.fedoraproject.org/pub/fedora/linux/releases/44/Cloud/aarch64/images/Fedora-Cloud-Base-Generic-44-1.7.aarch64.qcow2",
-        "format": "qcow2",
-        "sha256": "55c60a3b80d3616a08705afd0459e75fe9f03c54aba7a46e4002a41a72fa0d5b",
-        "size_bytes": 528154624
       }
     },
     {
